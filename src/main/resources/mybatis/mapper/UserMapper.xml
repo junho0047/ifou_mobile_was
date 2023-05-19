@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userInfo">
+
+   <select id="selectUserInfo" parameterType="hashmap" resultType="userInfo">
+        SELECT
+            USER_ID     AS userId,
+            USER_PW     AS userPw,
+            DEP_CD      AS depCd,
+            ORG_CD      AS orgCd,
+            USER_LV     AS userLv,
+            AUTH_SEQ    AS authSeq
+        FROM
+            TB_BAS_USER
+        WHERE
+            USER_ID=#{userId}
+    </select>
+
+    <select id="selectUserUauth" parameterType="hashmap" resultType="userUauth">
+
+        SELECT
+            t2.USER_ID      AS userId,
+            t2.ORG_CD       AS orgCd,
+            t2.DEP_CD       AS depCd,
+            t1.ORG_NO       AS orgNo,
+            t1.PTAB         AS pTab,
+            t1.VTAB         AS vTab,
+            t1.DTAB         AS dTab,
+            t2.USER_LV      AS userLv,
+            t2.TRANS_NO     AS transNo,
+            t2.AUTH_SEQ     AS authSeq,
+            t2.USER_NM      AS userNm
+        FROM
+            TB_BAS_ORG t1
+                INNER JOIN TB_BAS_USER t2
+                    ON
+                        (t1.ORG_CD=t2.ORG_CD)
+        where
+		    t2.USER_ID = #{userId}
+    </select>
+</mapper>

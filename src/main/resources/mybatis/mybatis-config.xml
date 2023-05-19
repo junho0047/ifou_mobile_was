@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+    <properties resource="application.properties" />
+    <typeAliases>
+        <typeAlias type="com.nifou.m.ifou_mobile_was.user.vo.UserInfo" alias="userInfo"/>
+        <typeAlias type="com.nifou.m.ifou_mobile_was.user.vo.UserUauth" alias="userUauth"/>
+    </typeAliases>
+<!--    <mappers>-->
+<!--        <mapper resource="mybatis.mapper.UserMapper.xml"/>-->
+<!--    </mappers>-->
+</configuration>
+
+
