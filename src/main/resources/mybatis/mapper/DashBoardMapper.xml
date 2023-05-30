@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dashBoardInfo">
+
+   <select id="selectDashBoard" parameterType="hashmap" resultType="dashBoardInfo">
+       SELECT
+             TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999'))                         AS ccAmt
+            ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999'))                         AS cbAmt
+            ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999'))                         AS icAmt
+            ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999'))         AS sumAmt
+            ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999'))                                  AS ccCnt
+            ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999'))                                  AS cbCnt
+            ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999'))                                  AS icCnt
+            ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999'))               AS sumCnt
+       FROM
+           (SELECT
+                SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END)      AS CCA
+                 ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END)    AS CCC
+                 ,SUM(CASE WHEN SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END)    AS CBA
+                 ,SUM(CASE WHEN SVCGB = 'CB' AND APPGB = 'C' THEN AMOUNT ELSE 0 END)    AS CBC
+                 ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END)    AS ICA
+                 ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END)    AS ICC
+                 ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END)                              AS CCCNT
+                 ,COUNT(CASE WHEN SVCGB = 'CB' THEN 1 END)                              AS CBCNT
+                 ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END)                              AS ICCNT
+            FROM
+                GLOB_MNG_ICVAN
+            WHERE
+                TID IN (
+                        SELECT TID FROM TB_BAS_TIDMAP
+                                   WHERE
+                                        ORG_CD  = #{orgCd})
+                                                 ${where_qry}
+           )
+    </select>
+
+</mapper>
