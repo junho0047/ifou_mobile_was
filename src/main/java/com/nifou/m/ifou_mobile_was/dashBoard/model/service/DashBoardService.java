@@ -6,4 +6,6 @@ import java.util.HashMap;
 
 public interface DashBoardService {
     DashBoardInfo getDashBoardInfo(HashMap<String, Object> map);
+
+    DashBoardInfo getDashBoardInfo2(HashMap<String, Object> map);
 }

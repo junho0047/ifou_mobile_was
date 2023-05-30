@@ -34,4 +34,17 @@
            )
     </select>
 
+    <select id="selectDashBoard2" parameterType="hashmap" resultType="dashBoardInfo">
+        SELECT
+            TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999')         AS "saleAmt"
+             ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999')            AS "fee"
+             ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999')   AS "sum"
+        FROM
+            TB_MNG_DEPDATA
+        WHERE
+            TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD =  #{orgCd})
+          AND EXP_DD = #{expDd}
+
+    </select>
+
 </mapper>

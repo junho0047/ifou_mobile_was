@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DashBoardInfo {
     @JsonProperty("appDd")
     private String appDd;
+    @JsonProperty("expDd")
+    private String expDd;
     @JsonProperty("CC_AMT")
     private String ccAmt;
     @JsonProperty("CB_AMT")
@@ -32,6 +34,8 @@ public class DashBoardInfo {
     public String getAppDd() {
         return appDd;
     }
+
+    public String getExpDd() { return expDd; }
 
     public String getCcAmt() {
         return ccAmt;
@@ -81,6 +85,8 @@ public class DashBoardInfo {
         this.appDd = appDd;
     }
 
+    public void setExpDd(String expDd) { this.expDd = expDd; }
+
     public void setCcAmt(String ccAmt) {
         this.ccAmt = ccAmt;
     }
@@ -127,8 +133,9 @@ public class DashBoardInfo {
 
     @Override
     public String toString() {
-        return "dashBoardInfo{" +
+        return "DashBoardInfo{" +
                 "appDd='" + appDd + '\'' +
+                ", expDd='" + expDd + '\'' +
                 ", ccAmt='" + ccAmt + '\'' +
                 ", cbAmt='" + cbAmt + '\'' +
                 ", icAmt='" + icAmt + '\'' +
@@ -143,8 +150,10 @@ public class DashBoardInfo {
                 '}';
     }
 
-    public DashBoardInfo(String appDd, String ccAmt, String cbAmt, String icAmt, String sumAmt, String ccCnt, String cbCnt, String icCnt, String sumCnt, String saleAmt, String fee, String sum) {
+    public DashBoardInfo(String appDd, String expDd, String ccAmt, String cbAmt, String icAmt, String sumAmt,
+                         String ccCnt, String cbCnt, String icCnt, String sumCnt, String saleAmt, String fee, String sum) {
         this.appDd = appDd;
+        this.expDd = expDd;
         this.ccAmt = ccAmt;
         this.cbAmt = cbAmt;
         this.icAmt = icAmt;

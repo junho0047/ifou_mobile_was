@@ -15,8 +15,13 @@ public class DashBoardDao {
     private SqlSessionTemplate sqlSession;
 
     public DashBoardInfo getDashBoardInfo(HashMap<String, Object> map) {
+        // 전일매출현황/월매출통계 조회
+        return  sqlSession.selectOne("dashBoardInfo.selectDashBoard",map);
 
-            return  sqlSession.selectOne("dashBoardInfo.selectDashBoard",map);
+    }
 
+    public DashBoardInfo getDashBoardInfo2(HashMap<String, Object> map) {
+        // 당일입금현황 조회
+        return  sqlSession.selectOne("dashBoardInfo.selectDashBoard2",map);
     }
 }

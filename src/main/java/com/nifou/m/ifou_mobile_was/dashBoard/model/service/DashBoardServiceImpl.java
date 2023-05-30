@@ -14,7 +14,15 @@ public class DashBoardServiceImpl implements DashBoardService {
 
     @Override
     public DashBoardInfo getDashBoardInfo(HashMap<String, Object> map) {
+        // 전일매출현황/월매출통계 조회
         DashBoardInfo dashBoardInfo = dashBoardDao.getDashBoardInfo(map);
+        return dashBoardInfo;
+    }
+
+    @Override
+    public DashBoardInfo getDashBoardInfo2(HashMap<String, Object> map) {
+        // 당일입금현황 조회
+        DashBoardInfo dashBoardInfo = dashBoardDao.getDashBoardInfo2(map);
         return dashBoardInfo;
     }
 }

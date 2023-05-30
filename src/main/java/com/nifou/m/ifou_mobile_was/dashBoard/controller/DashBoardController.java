@@ -25,6 +25,8 @@ public class DashBoardController {
                                     HttpServletRequest request,
                                     HttpServletResponse response
                                                                 ) throws NoSuchAlgorithmException, JsonProcessingException, IOException {
+        // 전일매출현황/월매출통계 조회
+
         request.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=UTF-8");
         response.setHeader("Accept", "application/x-www-form-urlencoded");
@@ -56,6 +58,37 @@ public class DashBoardController {
         dashBoardInfo = dashBoardService.getDashBoardInfo(map);
 
         System.out.println(dashBoardInfo);
+
+        return dashBoardInfo;
+    }
+
+    @RequestMapping(value = "/common/get_main_dashboard2", method = RequestMethod.POST)
+    public DashBoardInfo get_main_dashboard2 (@RequestParam(value = "orgcd",required = false) String orgCd,
+                                             @RequestParam(value = "expdd",required = false) String expDd,
+                                             HttpServletRequest request,
+                                             HttpServletResponse response
+                                                ) throws NoSuchAlgorithmException, JsonProcessingException, IOException {
+        // 당일입금현황 조회
+
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=UTF-8");
+        response.setHeader("Accept", "application/x-www-form-urlencoded");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
+
+        // 대시보드정보에 담을 객체 생성
+        DashBoardInfo dashBoardInfo = new DashBoardInfo();
+        dashBoardInfo.setAppDd(expDd);
+
+        String where_qry = "";
+
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("orgCd", orgCd);
+        map.put("expDd", expDd);
+
+
+        // 조회
+        dashBoardInfo = dashBoardService.getDashBoardInfo2(map);
 
         return dashBoardInfo;
     }
