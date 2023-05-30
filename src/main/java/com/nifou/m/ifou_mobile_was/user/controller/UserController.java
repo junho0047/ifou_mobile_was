@@ -2,9 +2,9 @@ package com.nifou.m.ifou_mobile_was.user.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.nifou.m.ifou_mobile_was.common.SHA256Util;
-import com.nifou.m.ifou_mobile_was.user.service.UserService;
-import com.nifou.m.ifou_mobile_was.user.vo.UserInfo;
-import com.nifou.m.ifou_mobile_was.user.vo.UserUauth;
+import com.nifou.m.ifou_mobile_was.user.model.service.UserService;
+import com.nifou.m.ifou_mobile_was.user.model.vo.UserInfo;
+import com.nifou.m.ifou_mobile_was.user.model.vo.UserUauth;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,8 +47,6 @@ public class UserController {
         // 유저정보를 담을 객체 생성
         UserInfo uInfo = new UserInfo();
         UserUauth uUauth = new UserUauth();
-
-
 
 
         HashMap<String, Object> map = new HashMap<String, Object>();

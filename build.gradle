@@ -40,3 +40,8 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootJar {
+    duplicatesStrategy = 'exclude'
+    // 기존 설정...
+}

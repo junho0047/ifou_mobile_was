@@ -3,8 +3,9 @@
 <configuration>
     <properties resource="application.properties" />
     <typeAliases>
-        <typeAlias type="com.nifou.m.ifou_mobile_was.user.vo.UserInfo" alias="userInfo"/>
-        <typeAlias type="com.nifou.m.ifou_mobile_was.user.vo.UserUauth" alias="userUauth"/>
+        <typeAlias type="com.nifou.m.ifou_mobile_was.user.model.vo.UserInfo" alias="userInfo"/>
+        <typeAlias type="com.nifou.m.ifou_mobile_was.user.model.vo.UserUauth" alias="userUauth"/>
+        <typeAlias type="com.nifou.m.ifou_mobile_was.dashBoard.model.vo.DashBoardInfo" alias="dashBoardInfo"/>
     </typeAliases>
 <!--    <mappers>-->
 <!--        <mapper resource="mybatis.mapper.UserMapper.xml"/>-->
