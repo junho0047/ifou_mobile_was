@@ -28,7 +28,6 @@ public class UserController {
     public ResponseEntity<String> userLogin(
                                 @RequestParam(value = "userid", required=false) String userId,
                                 @RequestParam(value = "userpw", required=false) String userPw,
-//                                @RequestBody Map<String, Object> body,
                                 UserInfo userInfo,
                                 UserUauth userUauth,
                                 HttpServletRequest request,

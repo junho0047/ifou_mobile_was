@@ -1,0 +1,865 @@
+2023-05-30 11:30:36.918 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - Starting IfouMobileWasApplication using Java 1.8.0_251 on DESKTOP-NOQ6DOM with PID 22424 (C:\Dev\ifou_mobile_was\build\classes\java\main started by gaon in C:\Dev\ifou_mobile_was)
+2023-05-30 11:30:36.919 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 11:30:37.070 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.nifou.m.ifou_mobile_was.mybatis.mapper]' package. Please check your configuration.
+2023-05-30 11:30:37.116 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8087 (http)
+2023-05-30 11:30:37.117 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2023-05-30 11:30:37.117 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 11:30:37.117 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-30 11:30:37.130 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 11:30:37.130 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 209 ms
+2023-05-30 11:30:37.189 [restartedMain] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2023-05-30 11:30:37.216 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-05-30 11:30:37.221 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2023-05-30 11:30:37.223 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8087 (http) with context path ''
+2023-05-30 11:30:37.226 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - Started IfouMobileWasApplication in 0.339 seconds (JVM running for 1766.304)
+2023-05-30 11:30:37.227 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2023-05-30 11:31:43.787 [http-nio-8087-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-30 11:31:43.788 [http-nio-8087-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-30 11:31:43.788 [http-nio-8087-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2023-05-30 11:31:43.796 [http-nio-8087-exec-4] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2023-05-30 11:31:43.938 [http-nio-8087-exec-4] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-2 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2023-05-30 11:31:43.943 [http-nio-8087-exec-4] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2023-05-30 11:31:43.944 [http-nio-8087-exec-4] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 11:31:44.080 [http-nio-8087-exec-1] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 11:31:44.319 [http-nio-8087-exec-2] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 11:31:44.365 [http-nio-8087-exec-5] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 11:31:44.599 [http-nio-8087-exec-4] INFO  jdbc.resultsettable - 
+|------|------|------|-------|------|------|------|-------|
+|ccamt |cbamt |icamt |sumamt |cccnt |cbcnt |iccnt |sumcnt |
+|------|------|------|-------|------|------|------|-------|
+|0     |0     |0     |0      |0     |0     |0     |0      |
+|------|------|------|-------|------|------|------|-------|
+
+2023-05-30 11:31:45.046 [http-nio-8087-exec-1] INFO  jdbc.resultsettable - 
+|--------|--------|------|--------|------|------|------|-------|
+|ccamt   |cbamt   |icamt |sumamt  |cccnt |cbcnt |iccnt |sumcnt |
+|--------|--------|------|--------|------|------|------|-------|
+|-14,040 |-14,040 |0     |-28,080 |1     |1     |0     |2      |
+|--------|--------|------|--------|------|------|------|-------|
+
+2023-05-30 11:31:45.190 [http-nio-8087-exec-5] INFO  jdbc.resultsettable - 
+|------|------|------|-------|------|------|------|-------|
+|ccamt |cbamt |icamt |sumamt |cccnt |cbcnt |iccnt |sumcnt |
+|------|------|------|-------|------|------|------|-------|
+|0     |0     |0     |0      |0     |0     |0     |0      |
+|------|------|------|-------|------|------|------|-------|
+
+2023-05-30 11:31:45.206 [http-nio-8087-exec-2] INFO  jdbc.resultsettable - 
+|--------|--------|------|--------|------|------|------|-------|
+|ccamt   |cbamt   |icamt |sumamt  |cccnt |cbcnt |iccnt |sumcnt |
+|--------|--------|------|--------|------|------|------|-------|
+|-14,040 |-14,040 |0     |-28,080 |1     |1     |0     |2      |
+|--------|--------|------|--------|------|------|------|-------|
+
+2023-05-30 11:35:19.034 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2023-05-30 11:35:19.166 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2023-05-30 14:52:55.091 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - Starting IfouMobileWasApplication using Java 1.8.0_251 on DESKTOP-NOQ6DOM with PID 25068 (C:\Dev\ifou_mobile_was\build\classes\java\main started by gaon in C:\Dev\ifou_mobile_was)
+2023-05-30 14:52:55.096 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 14:52:55.148 [restartedMain] INFO  org.springframework.boot.devtools.restart.ChangeableUrls - The Class-Path manifest attribute in C:\Users\gaon\.gradle\caches\modules-2\files-2.1\com.ibm.db2.jcc\db2jcc\db2jcc4\f347e27e648ca39e6fae94e103b48ce2a043ff4a\db2jcc-db2jcc4.jar referenced one or more files that do not exist: file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.ibm.db2.jcc/db2jcc/db2jcc4/f347e27e648ca39e6fae94e103b48ce2a043ff4a/pdq.jar
+2023-05-30 14:52:55.148 [restartedMain] INFO  org.springframework.boot.devtools.restart.ChangeableUrls - The Class-Path manifest attribute in C:\Users\gaon\.gradle\caches\modules-2\files-2.1\com.oracle.database.security\oraclepki\21.5.0.0\edeb1ecf18a165b9e217295808c5087059560187\oraclepki-21.5.0.0.jar referenced one or more files that do not exist: file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.oracle.database.security/oraclepki/21.5.0.0/edeb1ecf18a165b9e217295808c5087059560187/osdt_core.jar,file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.oracle.database.security/oraclepki/21.5.0.0/edeb1ecf18a165b9e217295808c5087059560187/osdt_cert.jar,file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.oracle.database.security/oraclepki/21.5.0.0/oracle.osdt/osdt_core.jar,file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.oracle.database.security/oraclepki/21.5.0.0/oracle.osdt/osdt_cert.jar
+2023-05-30 14:52:55.148 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-30 14:52:55.148 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-30 14:52:55.576 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.nifou.m.ifou_mobile_was.mybatis.mapper]' package. Please check your configuration.
+2023-05-30 14:52:55.853 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 28080 (http)
+2023-05-30 14:52:55.860 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-28080"]
+2023-05-30 14:52:55.860 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 14:52:55.861 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-30 14:52:55.924 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 14:52:55.925 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 776 ms
+2023-05-30 14:52:56.243 [restartedMain] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2023-05-30 14:52:56.361 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-05-30 14:52:56.373 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-28080"]
+2023-05-30 14:52:56.384 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 28080 (http) with context path ''
+2023-05-30 14:52:56.392 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - Started IfouMobileWasApplication in 1.53 seconds (JVM running for 2.852)
+2023-05-30 14:53:59.089 [http-nio-28080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-30 14:53:59.089 [http-nio-28080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-30 14:53:59.090 [http-nio-28080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-05-30 14:53:59.136 [http-nio-28080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-05-30 14:53:59.365 [http-nio-28080-exec-1] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2023-05-30 14:53:59.371 [http-nio-28080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-05-30 14:53:59.416 [http-nio-28080-exec-1] INFO  jdbc.sqlonly - SELECT USER_ID AS userId, USER_PW AS userPw, DEP_CD AS depCd, ORG_CD AS orgCd, USER_LV AS userLv, 
+AUTH_SEQ AS authSeq FROM TB_BAS_USER WHERE USER_ID='nifou2' 
+
+2023-05-30 14:53:59.457 [http-nio-28080-exec-1] INFO  jdbc.resultsettable - 
+|-------|-----------------------------------------------------------------|-------------|-------|-------|---------|
+|userid |userpw                                                           |depcd        |orgcd  |userlv |authseq  |
+|-------|-----------------------------------------------------------------|-------------|-------|-------|---------|
+|nifou2 |6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b |MD1676596348 |OR0016 |M      |AS000001 |
+|-------|-----------------------------------------------------------------|-------------|-------|-------|---------|
+
+2023-05-30 14:53:59.462 [http-nio-28080-exec-1] INFO  jdbc.sqlonly - SELECT t2.USER_ID AS userId, t2.ORG_CD AS orgCd, t2.DEP_CD AS depCd, t1.ORG_NO AS orgNo, t1.PTAB 
+AS pTab, t1.VTAB AS vTab, t1.DTAB AS dTab, t2.USER_LV AS userLv, t2.TRANS_NO AS transNo, t2.AUTH_SEQ 
+AS authSeq, t2.USER_NM AS userNm FROM TB_BAS_ORG t1 INNER JOIN TB_BAS_USER t2 ON (t1.ORG_CD=t2.ORG_CD) 
+where t2.USER_ID = 'nifou2' 
+
+2023-05-30 14:53:59.473 [http-nio-28080-exec-1] INFO  jdbc.resultsettable - 
+|-------|-------|-------------|-----------|---------------|---------------|---------------|-------|--------|---------|-------|
+|userid |orgcd  |depcd        |orgno      |ptab           |vtab           |dtab           |userlv |transno |authseq  |usernm |
+|-------|-------|-------------|-----------|---------------|---------------|---------------|-------|--------|---------|-------|
+|nifou2 |OR0016 |MD1676596348 |0123456789 |GLOB_MNG_ICVAN |GLOB_MNG_ICVAN |TB_MNG_DEPDATA |M      |123     |AS000001 |차세대    |
+|-------|-------|-------------|-----------|---------------|---------------|---------------|-------|--------|---------|-------|
+
+2023-05-30 14:54:00.720 [http-nio-28080-exec-3] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '" + expdd 
++ "' 
+
+2023-05-30 14:54:00.731 [http-nio-28080-exec-3] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|                   0 |                   0 |                   0 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 14:54:00.733 [http-nio-28080-exec-2] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 14:54:00.733 [http-nio-28080-exec-7] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 14:54:01.344 [http-nio-28080-exec-7] INFO  jdbc.resultsettable - 
+|------|------|------|-------|------|------|------|-------|
+|ccamt |cbamt |icamt |sumamt |cccnt |cbcnt |iccnt |sumcnt |
+|------|------|------|-------|------|------|------|-------|
+|0     |0     |0     |0      |0     |0     |0     |0      |
+|------|------|------|-------|------|------|------|-------|
+
+2023-05-30 14:54:01.351 [http-nio-28080-exec-2] INFO  jdbc.resultsettable - 
+|--------|--------|------|--------|------|------|------|-------|
+|ccamt   |cbamt   |icamt |sumamt  |cccnt |cbcnt |iccnt |sumcnt |
+|--------|--------|------|--------|------|------|------|-------|
+|-14,040 |-14,040 |0     |-28,080 |1     |1     |0     |2      |
+|--------|--------|------|--------|------|------|------|-------|
+
+2023-05-30 14:55:26.397 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-30 14:55:26.594 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-05-30 14:55:29.474 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - Starting IfouMobileWasApplication using Java 1.8.0_251 on DESKTOP-NOQ6DOM with PID 21696 (C:\Dev\ifou_mobile_was\build\classes\java\main started by gaon in C:\Dev\ifou_mobile_was)
+2023-05-30 14:55:29.480 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 14:55:29.533 [restartedMain] INFO  org.springframework.boot.devtools.restart.ChangeableUrls - The Class-Path manifest attribute in C:\Users\gaon\.gradle\caches\modules-2\files-2.1\com.ibm.db2.jcc\db2jcc\db2jcc4\f347e27e648ca39e6fae94e103b48ce2a043ff4a\db2jcc-db2jcc4.jar referenced one or more files that do not exist: file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.ibm.db2.jcc/db2jcc/db2jcc4/f347e27e648ca39e6fae94e103b48ce2a043ff4a/pdq.jar
+2023-05-30 14:55:29.533 [restartedMain] INFO  org.springframework.boot.devtools.restart.ChangeableUrls - The Class-Path manifest attribute in C:\Users\gaon\.gradle\caches\modules-2\files-2.1\com.oracle.database.security\oraclepki\21.5.0.0\edeb1ecf18a165b9e217295808c5087059560187\oraclepki-21.5.0.0.jar referenced one or more files that do not exist: file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.oracle.database.security/oraclepki/21.5.0.0/edeb1ecf18a165b9e217295808c5087059560187/osdt_core.jar,file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.oracle.database.security/oraclepki/21.5.0.0/edeb1ecf18a165b9e217295808c5087059560187/osdt_cert.jar,file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.oracle.database.security/oraclepki/21.5.0.0/oracle.osdt/osdt_core.jar,file:/C:/Users/gaon/.gradle/caches/modules-2/files-2.1/com.oracle.database.security/oraclepki/21.5.0.0/oracle.osdt/osdt_cert.jar
+2023-05-30 14:55:29.533 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-30 14:55:29.533 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-30 14:55:29.968 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.nifou.m.ifou_mobile_was.mybatis.mapper]' package. Please check your configuration.
+2023-05-30 14:55:30.235 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 28080 (http)
+2023-05-30 14:55:30.241 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-28080"]
+2023-05-30 14:55:30.242 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 14:55:30.242 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-30 14:55:30.303 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 14:55:30.303 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 769 ms
+2023-05-30 14:55:30.620 [restartedMain] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2023-05-30 14:55:30.737 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-05-30 14:55:30.749 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-28080"]
+2023-05-30 14:55:30.760 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 28080 (http) with context path ''
+2023-05-30 14:55:30.767 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - Started IfouMobileWasApplication in 1.521 seconds (JVM running for 3.069)
+2023-05-30 14:55:43.092 [http-nio-28080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-30 14:55:43.092 [http-nio-28080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-30 14:55:43.092 [http-nio-28080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2023-05-30 14:55:43.135 [http-nio-28080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-05-30 14:55:43.359 [http-nio-28080-exec-1] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2023-05-30 14:55:43.366 [http-nio-28080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-05-30 14:55:43.446 [http-nio-28080-exec-1] INFO  jdbc.sqlonly - SELECT USER_ID AS userId, USER_PW AS userPw, DEP_CD AS depCd, ORG_CD AS orgCd, USER_LV AS userLv, 
+AUTH_SEQ AS authSeq FROM TB_BAS_USER WHERE USER_ID='nifou2' 
+
+2023-05-30 14:55:43.468 [http-nio-28080-exec-1] INFO  jdbc.resultsettable - 
+|-------|-----------------------------------------------------------------|-------------|-------|-------|---------|
+|userid |userpw                                                           |depcd        |orgcd  |userlv |authseq  |
+|-------|-----------------------------------------------------------------|-------------|-------|-------|---------|
+|nifou2 |6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b |MD1676596348 |OR0016 |M      |AS000001 |
+|-------|-----------------------------------------------------------------|-------------|-------|-------|---------|
+
+2023-05-30 14:55:43.473 [http-nio-28080-exec-1] INFO  jdbc.sqlonly - SELECT t2.USER_ID AS userId, t2.ORG_CD AS orgCd, t2.DEP_CD AS depCd, t1.ORG_NO AS orgNo, t1.PTAB 
+AS pTab, t1.VTAB AS vTab, t1.DTAB AS dTab, t2.USER_LV AS userLv, t2.TRANS_NO AS transNo, t2.AUTH_SEQ 
+AS authSeq, t2.USER_NM AS userNm FROM TB_BAS_ORG t1 INNER JOIN TB_BAS_USER t2 ON (t1.ORG_CD=t2.ORG_CD) 
+where t2.USER_ID = 'nifou2' 
+
+2023-05-30 14:55:43.480 [http-nio-28080-exec-1] INFO  jdbc.resultsettable - 
+|-------|-------|-------------|-----------|---------------|---------------|---------------|-------|--------|---------|-------|
+|userid |orgcd  |depcd        |orgno      |ptab           |vtab           |dtab           |userlv |transno |authseq  |usernm |
+|-------|-------|-------------|-----------|---------------|---------------|---------------|-------|--------|---------|-------|
+|nifou2 |OR0016 |MD1676596348 |0123456789 |GLOB_MNG_ICVAN |GLOB_MNG_ICVAN |TB_MNG_DEPDATA |M      |123     |AS000001 |차세대    |
+|-------|-------|-------------|-----------|---------------|---------------|---------------|-------|--------|---------|-------|
+
+2023-05-30 14:55:44.104 [http-nio-28080-exec-2] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 14:55:44.111 [http-nio-28080-exec-3] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 14:55:44.117 [http-nio-28080-exec-4] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 14:55:44.148 [http-nio-28080-exec-2] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|                   0 |                   0 |                   0 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 14:55:44.529 [http-nio-28080-exec-3] INFO  jdbc.resultsettable - 
+|------|------|------|-------|------|------|------|-------|
+|ccamt |cbamt |icamt |sumamt |cccnt |cbcnt |iccnt |sumcnt |
+|------|------|------|-------|------|------|------|-------|
+|0     |0     |0     |0      |0     |0     |0     |0      |
+|------|------|------|-------|------|------|------|-------|
+
+2023-05-30 14:55:44.578 [http-nio-28080-exec-4] INFO  jdbc.resultsettable - 
+|--------|--------|------|--------|------|------|------|-------|
+|ccamt   |cbamt   |icamt |sumamt  |cccnt |cbcnt |iccnt |sumcnt |
+|--------|--------|------|--------|------|------|------|-------|
+|-14,040 |-14,040 |0     |-28,080 |1     |1     |0     |2      |
+|--------|--------|------|--------|------|------|------|-------|
+
+2023-05-30 15:07:06.414 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 10 class path changes (0 additions, 0 deletions, 10 modifications)
+2023-05-30 15:07:07.119 [Thread-8] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-28080"]
+2023-05-30 15:07:07.119 [Thread-8] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-05-30 15:07:07.121 [Thread-8] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-30 15:07:07.124 [Thread-8] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1093)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2023-05-30 15:07:07.124 [Thread-8] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-28080"]
+2023-05-30 15:07:07.126 [Thread-8] INFO  org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-28080"]
+2023-05-30 15:07:07.128 [Thread-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-30 15:07:07.275 [Thread-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-05-30 15:07:07.410 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - Starting IfouMobileWasApplication using Java 1.8.0_251 on DESKTOP-NOQ6DOM with PID 21696 (C:\Dev\ifou_mobile_was\build\classes\java\main started by gaon in C:\Dev\ifou_mobile_was)
+2023-05-30 15:07:07.411 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 15:07:07.563 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.nifou.m.ifou_mobile_was.mybatis.mapper]' package. Please check your configuration.
+2023-05-30 15:07:07.609 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 28080 (http)
+2023-05-30 15:07:07.610 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-28080"]
+2023-05-30 15:07:07.610 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 15:07:07.610 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-30 15:07:07.623 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 15:07:07.623 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 210 ms
+2023-05-30 15:07:07.686 [restartedMain] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2023-05-30 15:07:07.715 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-05-30 15:07:07.720 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-28080"]
+2023-05-30 15:07:07.722 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 28080 (http) with context path ''
+2023-05-30 15:07:07.724 [restartedMain] INFO  com.nifou.m.ifou_mobile_was.IfouMobileWasApplication - Started IfouMobileWasApplication in 0.343 seconds (JVM running for 700.027)
+2023-05-30 15:07:07.726 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2023-05-30 15:24:21.972 [http-nio-28080-exec-3] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-30 15:24:21.973 [http-nio-28080-exec-3] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-30 15:24:21.975 [http-nio-28080-exec-3] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-05-30 15:24:21.982 [http-nio-28080-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2023-05-30 15:24:22.119 [http-nio-28080-exec-3] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-2 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2023-05-30 15:24:22.124 [http-nio-28080-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2023-05-30 15:24:22.125 [http-nio-28080-exec-3] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:24:22.138 [http-nio-28080-exec-3] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|                   0 |                   0 |                   0 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:24:22.138 [http-nio-28080-exec-1] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:24:22.245 [http-nio-28080-exec-4] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:24:22.769 [http-nio-28080-exec-1] INFO  jdbc.resultsettable - 
+|--------|--------|------|--------|------|------|------|-------|
+|ccamt   |cbamt   |icamt |sumamt  |cccnt |cbcnt |iccnt |sumcnt |
+|--------|--------|------|--------|------|------|------|-------|
+|-14,040 |-14,040 |0     |-28,080 |1     |1     |0     |2      |
+|--------|--------|------|--------|------|------|------|-------|
+
+2023-05-30 15:24:22.845 [http-nio-28080-exec-4] INFO  jdbc.resultsettable - 
+|------|------|------|-------|------|------|------|-------|
+|ccamt |cbamt |icamt |sumamt |cccnt |cbcnt |iccnt |sumcnt |
+|------|------|------|-------|------|------|------|-------|
+|0     |0     |0     |0      |0     |0     |0     |0      |
+|------|------|------|-------|------|------|------|-------|
+
+2023-05-30 15:38:54.590 [http-nio-28080-exec-7] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:38:54.590 [http-nio-28080-exec-9] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:38:54.591 [http-nio-28080-exec-8] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:38:54.628 [http-nio-28080-exec-9] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|                   0 |                   0 |                   0 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:38:55.003 [http-nio-28080-exec-8] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:38:55.115 [http-nio-28080-exec-7] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 15:44:30.977 [http-nio-28080-exec-4] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:44:30.977 [http-nio-28080-exec-5] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:44:30.982 [http-nio-28080-exec-2] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:44:30.996 [http-nio-28080-exec-5] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|                   0 |                   0 |                   0 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:44:31.331 [http-nio-28080-exec-2] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:44:31.359 [http-nio-28080-exec-4] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 15:45:12.985 [http-nio-28080-exec-6] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:45:12.986 [http-nio-28080-exec-9] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:45:12.986 [http-nio-28080-exec-8] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:45:13.001 [http-nio-28080-exec-8] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|           6,184,130 |             124,816 |           6,059,314 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:45:13.367 [http-nio-28080-exec-9] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:45:13.375 [http-nio-28080-exec-6] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:02.165 [http-nio-28080-exec-5] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:49:02.166 [http-nio-28080-exec-2] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:49:02.166 [http-nio-28080-exec-1] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:49:02.194 [http-nio-28080-exec-2] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|           6,184,130 |             124,816 |           6,059,314 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:49:02.585 [http-nio-28080-exec-5] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:02.618 [http-nio-28080-exec-1] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:02.718 [http-nio-28080-exec-9] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:49:02.718 [http-nio-28080-exec-4] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:49:02.727 [http-nio-28080-exec-9] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|           6,184,130 |             124,816 |           6,059,314 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:49:02.732 [http-nio-28080-exec-8] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:49:03.064 [http-nio-28080-exec-4] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:03.102 [http-nio-28080-exec-8] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:03.147 [http-nio-28080-exec-3] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:49:03.147 [http-nio-28080-exec-6] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:49:03.147 [http-nio-28080-exec-7] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:49:03.155 [http-nio-28080-exec-3] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|           6,184,130 |             124,816 |           6,059,314 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:49:03.364 [http-nio-28080-exec-10] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:49:03.372 [http-nio-28080-exec-2] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:49:03.372 [http-nio-28080-exec-5] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:49:03.392 [http-nio-28080-exec-5] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|           6,184,130 |             124,816 |           6,059,314 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:49:03.595 [http-nio-28080-exec-7] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:03.633 [http-nio-28080-exec-4] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:49:03.633 [http-nio-28080-exec-9] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:49:03.639 [http-nio-28080-exec-1] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:49:03.643 [http-nio-28080-exec-4] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|           6,184,130 |             124,816 |           6,059,314 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:49:03.682 [http-nio-28080-exec-10] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:03.719 [http-nio-28080-exec-6] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:03.894 [http-nio-28080-exec-2] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:03.903 [http-nio-28080-exec-5] INFO  jdbc.sqlonly - SELECT TO_CHAR(NVL(SUM(SALE_AMT),0),'999,999,999,999,999') AS "saleAmt" ,TO_CHAR(NVL(SUM(FEE),0),'999,999,999,999,999') 
+AS "fee" ,TO_CHAR(NVL(SUM(SALE_AMT-FEE),0),'999,999,999,999,999') AS "sum" FROM TB_MNG_DEPDATA 
+WHERE TID IN (SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND EXP_DD = '20230530' 
+
+2023-05-30 15:49:03.903 [http-nio-28080-exec-8] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND SUBSTR(APPDD,0,6) = 202305 
+) 
+
+2023-05-30 15:49:03.903 [http-nio-28080-exec-3] INFO  jdbc.sqlonly - SELECT TRIM(TO_CHAR(NVL(SUM(CCA-CCC),0),'999,999,999,999,999')) AS ccAmt ,TRIM(TO_CHAR(NVL(SUM(CBA-CBC),0),'999,999,999,999,999')) 
+AS cbAmt ,TRIM(TO_CHAR(NVL(SUM(ICA-ICC),0),'999,999,999,999,999')) AS icAmt ,TRIM(TO_CHAR(NVL(SUM(CCA+CBA+ICA-CCC-CBC-ICC),0),'999,999,999,999,999')) 
+AS sumAmt ,TRIM(TO_CHAR(SUM(CCCNT),'999,999,999,999,999')) AS ccCnt ,TRIM(TO_CHAR(SUM(CBCNT),'999,999,999,999,999')) 
+AS cbCnt ,TRIM(TO_CHAR(SUM(ICCNT),'999,999,999,999,999')) AS icCnt ,TRIM(TO_CHAR(NVL(SUM(CCCNT+CBCNT+ICCNT),0),'999,999,999,999,999')) 
+AS sumCnt FROM (SELECT SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS 
+CCA ,SUM(CASE WHEN SVCGB = 'CC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CCC ,SUM(CASE WHEN 
+SVCGB = 'CB' AND APPGB = 'A' THEN AMOUNT ELSE 0 END) AS CBA ,SUM(CASE WHEN SVCGB = 'CB' AND 
+APPGB = 'C' THEN AMOUNT ELSE 0 END) AS CBC ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'A' THEN 
+AMOUNT ELSE 0 END) AS ICA ,SUM(CASE WHEN SVCGB = 'IC' AND APPGB = 'C' THEN AMOUNT ELSE 0 END) 
+AS ICC ,COUNT(CASE WHEN SVCGB = 'CC' THEN 1 END) AS CCCNT ,COUNT(CASE WHEN SVCGB = 'CB' THEN 
+1 END) AS CBCNT ,COUNT(CASE WHEN SVCGB = 'IC' THEN 1 END) AS ICCNT FROM GLOB_MNG_ICVAN WHERE 
+TID IN ( SELECT TID FROM TB_BAS_TIDMAP WHERE ORG_CD = 'OR0016') AND APPDD = 20230529 ) 
+
+2023-05-30 15:49:03.911 [http-nio-28080-exec-5] INFO  jdbc.resultsettable - 
+|---------------------|---------------------|---------------------|
+|saleamt              |fee                  |sum                  |
+|---------------------|---------------------|---------------------|
+|           6,184,130 |             124,816 |           6,059,314 |
+|---------------------|---------------------|---------------------|
+
+2023-05-30 15:49:04.147 [http-nio-28080-exec-9] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:04.254 [http-nio-28080-exec-1] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:04.289 [http-nio-28080-exec-3] INFO  jdbc.resultsettable - 
+|----------|------|------|----------|------|------|------|-------|
+|ccamt     |cbamt |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|------|------|----------|------|------|------|-------|
+|2,000,000 |0     |0     |2,000,000 |2     |0     |0     |2      |
+|----------|------|------|----------|------|------|------|-------|
+
+2023-05-30 15:49:04.381 [http-nio-28080-exec-8] INFO  jdbc.resultsettable - 
+|----------|--------|------|----------|------|------|------|-------|
+|ccamt     |cbamt   |icamt |sumamt    |cccnt |cbcnt |iccnt |sumcnt |
+|----------|--------|------|----------|------|------|------|-------|
+|3,094,560 |-14,040 |0     |3,080,520 |5     |1     |0     |6      |
+|----------|--------|------|----------|------|------|------|-------|
+
+2023-05-30 18:04:00.694 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2023-05-30 18:04:00.819 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.

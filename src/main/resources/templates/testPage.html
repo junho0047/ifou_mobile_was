@@ -6,10 +6,44 @@
 </head>
 <body>
 <form action="/user/login.gaon" method="post">
-    <h1>테스트</h1>
-    <input type="text" name="userid" id="userid" /><br />
-    <input type="password" name="userpw" id="userpw" /><br />
+    <h1>로그인 테스트</h1>
+    <input type="text" name="userid" id="userid" value="nifou2"/><br />
+    <input type="password" name="userpw" id="userpw" value="1" /><br />
     <input type="submit" value="로그인"/>
 </form>
+
+<form action="/common/get_menu.gaon" method="post">
+    <h1>메뉴 출력 테스트</h1>
+    <input type="text" name="auth_seq" id="auth_seq" value="AS000001"/><br />
+    <input type="text" name="orgcd"  value="OR0016" /><br />
+    <input type="submit" value="메뉴 출력 테스트"/>
+</form>
+
+<form action="/common/get_depcd" method="post">
+    <h1>사업부 출력 테스트</h1>
+    <input type="text" name="orgcd" value="OR0016" /><br />
+    <input type="submit" value="사업부 출력 테스트"/>
+</form>
+
+<form action="/common/get_acqcd" method="post">
+    <h1>카드사 출력 테스트</h1>
+    <input type="text" name="orgcd"  value="OR0016" /><br />
+    <input type="submit" value="카드사 출력 테스트"/>
+</form>
+
+
+<form action="/common/get_tidcd" method="post">
+    <h1>단말기 출력 테스트</h1>
+    <input type="text" name="orgcd" id="orgcd" value="OR0016" /><br />
+    <input type="submit" value="단말기 출력 테스트"/>
+</form>
+
+<form action="/common/columns.gaon" method="post">
+    <h1>그리드컬럼 출력 테스트</h1>
+    <input type="text" name="orgcd"  value="OR0016" /><br />
+    <input type="text" name="pages"  value="0204M" /><br />
+    <input type="submit" value="그리드컬럼 출력"/>
+</form>
+
 </body>
 </html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Common">
+
+    <select id="selectMenu" parameterType="hashmap" resultType="menuInfo">
+        SELECT
+            #{authSeq}          AS authSeq,
+            ORGCD            AS orgCD,
+            A.PROGRAM_SEQ       AS programseq,
+            B.PROGRAM_NAME      AS menuName,
+            B.DEPTH             AS menuDepth,
+            B.PARENT_SEQ        AS parentSeq,
+            A.ENABLE_READ       AS authR,
+            A.ENABLE_CREATE     AS authC,
+            A.ENABLE_UPDATE     AS authU,
+            A.ENABLE_DELETE     AS authD,
+            B.SRC_LOCATION      AS murl
+        FROM TB_SYS_MENU A
+                 LEFT OUTER JOIN
+             (SELECT PROGRAM_SEQ, PROGRAM_NAME, PARENT_SEQ, DEPTH, SRC_LOCATION, SORT FROM TB_SYS_PROGRAM) B
+             ON (A.PROGRAM_SEQ=B.PROGRAM_SEQ)
+        WHERE A.AUTH_SEQ = #{authSeq} AND ORGCD = #{orgCd}  AND ENABLE_READ ='M'
+        ORDER BY B.SORT ASC
+    </select>
+
+    <select id="selectDep" parameterType="hashmap" resultType="commonInfo">
+        SELECT
+            ORG_CD           AS orgCd,
+            DEP_CD              AS depCd,
+            DEP_NM              AS depNm
+        FROM
+            TB_BAS_DEPART
+        WHERE
+            ORG_CD = #{orgCd}
+    </select>
+
+    <select id="selectAcq" parameterType="hashmap" resultType="commonInfo">
+        SELECT
+            PUR_CD              AS tidNm,
+            PUR_NM              AS tidCd,
+            PUR_KOCES
+        FROM
+            TB_BAS_PURINFO
+        WHERE
+            PUR_USE='Y'
+        ORDER BY
+            PUR_NM
+        ASC
+    </select>
+
+    <select id="selectTid" parameterType="hashmap" resultType="commonInfo">
+        SELECT
+            ORG_CD            AS orgCd,
+            TERM_NM              AS tidNm,
+            TERM_ID              AS tidCd
+        FROM
+            TB_BAS_TIDMST
+        WHERE
+            ORG_CD = #{orgCd}
+
+    </select>
+
+    <select id="selectTbSysDomain" parameterType="hashmap" resultType="columnsInfo">
+        SELECT
+            ORGCD                   AS orgCd    ,
+            FIELDS_TXT              AS fieldsTxt,
+            ALIGNS                  AS aligns   ,
+            COL_TYPE                AS colType  ,
+            SORTS                   AS sorts    ,
+            WIDTHS                  AS widths   ,
+            POS_FIELD               AS posField  ,
+            VAN_FIELD               AS vanField ,
+            CASH_FIELD              AS cashField,
+            PAGES                   AS pages    ,
+            ORN                     AS orn      ,
+            ROWSPAN                 AS rowspan  ,
+            COLSPAN                 AS colspan  ,
+            COL_CHK                 AS colChk   ,
+            COL_TXT                 AS colTxt
+        FROM
+            TB_SYS_DOMAIN
+        WHERE
+            ORGCD=#{orgCd}
+          and
+            pages = #{pages}
+        order by orn asc
+    </select>
+
+
+</mapper>
