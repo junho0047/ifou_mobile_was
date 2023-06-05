@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Result">
+
+    <select id="sub02_04" parameterType="hashmap" resultType="resultInfo">
+        SELECT
+            DEP_NM                                                              depNm,
+            PUR_NM                                                              trAcqnm,
+            ACQ_CD                                                              acqCd,
+            TRIM(TO_CHAR((SUM(ACNT))     ,'999,999,999,999,999,999')) 	        aCnt,
+            TRIM(TO_CHAR((SUM(CCNT))     ,'999,999,999,999,999,999')) 		    cCnt,
+            TRIM(TO_CHAR((SUM(AAMT))     ,'999,999,999,999,999,999')) 		    aAmt,
+            TRIM(TO_CHAR((SUM(CAMT))     ,'999,999,999,999,999,999')) 		    cAmt,
+            TRIM(TO_CHAR((SUM(ACNT)+SUM(CCNT)),'999,999,999,999,999,999'))      totCnt,
+            TRIM(TO_CHAR((SUM(AAMT)-SUM(CAMT)),'999,999,999,999,999,999'))      totAmt,
+            APPDD                                                               hidden
+        FROM (
+                 SELECT
+                     TID, MID, ACQ_CD, SUM(ACNT) ACNT, SUM(CCNT) CCNT, SUM(AAMT) AAMT, SUM(CAMT) CAMT, APPDD
+                 FROM(
+                         SELECT
+                             TID,
+                             MID,
+                             ACQ_CD,
+                             APPDD,
+                             CASE WHEN APPGB='A' THEN COUNT(1)    ELSE 0 END ACNT,
+                             CASE WHEN APPGB='A' THEN SUM(AMOUNT) ELSE 0 END AAMT,
+                             CASE WHEN APPGB='C' THEN COUNT(1)    ELSE 0 END CCNT,
+                             CASE WHEN APPGB='C' THEN SUM(AMOUNT) ELSE 0 END CAMT
+                         FROM
+                             GLOB_MNG_ICVAN
+                         WHERE SVCGB IN ('CC', 'CE') AND AUTHCD IN ('0000', '6666') ${setWhere}
+                         GROUP BY TID, MID, ACQ_CD, APPGB, APPDD
+                     )
+                 GROUP BY TID, MID, ACQ_CD, APPDD
+             )T1
+                 LEFT OUTER JOIN( SELECT PUR_NM, PUR_KOCES, PUR_OCD, PUR_SORT FROM TB_BAS_PURINFO )T2 ON(T1.ACQ_CD=T2.PUR_OCD OR T1.ACQ_CD=T2.PUR_KOCES )
+                 LEFT OUTER JOIN(
+            SELECT DEP_CD, TERM_NM, TERM_ID FROM TB_BAS_TIDMST WHERE ORG_CD=#{orgCd}
+        )T3 ON(T1.TID=T3.TERM_ID)
+                 LEFT OUTER JOIN(
+            SELECT DEP_NM, DEP_CD FROM TB_BAS_DEPART WHERE ORG_CD=#{orgCd}
+        )T4 ON(T3.DEP_CD=T4.DEP_CD)
+        GROUP BY ACQ_CD, PUR_NM, APPDD, DEP_NM ORDER BY  PUR_NM ASC
+    </select>
+
+
+
+
+</mapper>

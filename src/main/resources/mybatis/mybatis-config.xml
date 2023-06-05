@@ -9,6 +9,7 @@
         <typeAlias type="com.nifou.m.ifou_mobile_was.common.model.vo.MenuInfo" alias="menuInfo"/>
         <typeAlias type="com.nifou.m.ifou_mobile_was.common.model.vo.CommonInfo" alias="commonInfo"/>
         <typeAlias type="com.nifou.m.ifou_mobile_was.common.model.vo.ColumnsInfo" alias="columnsInfo"/>
+        <typeAlias type="com.nifou.m.ifou_mobile_was.result.model.vo.ResultInfo" alias="resultInfo"/>
     </typeAliases>
 <!--    <mappers>-->
 <!--        <mapper resource="mybatis.mapper.UserMapper.xml"/>-->
